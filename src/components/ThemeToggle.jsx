@@ -4,11 +4,11 @@ import { useTheme } from '../contexts/ThemeContext';
 
 const ToggleContainer = styled.button`
   position: relative;
-  width: 60px;
-  height: 30px;
+  width: 50px;
+  height: 26px;
   background: ${props => props.theme.colors.backgroundCard};
   border: 2px solid ${props => props.theme.colors.border};
-  border-radius: 15px;
+  border-radius: 13px;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
@@ -17,27 +17,40 @@ const ToggleContainer = styled.button`
   
   &:hover {
     border-color: ${props => props.theme.colors.primary};
-    box-shadow: 0 4px 12px ${props => props.theme.colors.shadow};
+    box-shadow: 0 3px 10px ${props => props.theme.colors.shadow};
+  }
+  
+  @media (max-width: 480px) {
+    width: 46px;
+    height: 24px;
+    border-radius: 12px;
   }
 `;
 
 const ToggleSlider = styled.div`
   position: absolute;
-  width: 22px;
-  height: 22px;
+  width: 18px;
+  height: 18px;
   background: linear-gradient(135deg, #8b7355, #a68b5b);
   border-radius: 50%;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  transform: translateX(${props => props.isDarkMode ? '28px' : '2px'});
+  transform: translateX(${props => props.isDarkMode ? '22px' : '2px'});
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 10px;
+  font-size: 8px;
   color: white;
-  box-shadow: 0 2px 8px rgba(139, 115, 85, 0.3);
+  box-shadow: 0 2px 6px rgba(139, 115, 85, 0.3);
   
   &:hover {
-    box-shadow: 0 4px 12px rgba(139, 115, 85, 0.4);
+    box-shadow: 0 3px 10px rgba(139, 115, 85, 0.4);
+  }
+  
+  @media (max-width: 480px) {
+    width: 16px;
+    height: 16px;
+    transform: translateX(${props => props.isDarkMode ? '20px' : '2px'});
+    font-size: 7px;
   }
 `;
 
@@ -48,15 +61,23 @@ const IconContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 6px;
+  padding: 0 5px;
   pointer-events: none;
+  
+  @media (max-width: 480px) {
+    padding: 0 4px;
+  }
 `;
 
 const Icon = styled.span`
-  font-size: 12px;
+  font-size: 10px;
   opacity: ${props => props.active ? '1' : '0.3'};
   transition: opacity 0.3s ease;
   color: ${props => props.theme.colors.textSecondary};
+  
+  @media (max-width: 480px) {
+    font-size: 9px;
+  }
 `;
 
 const ThemeToggle = () => {

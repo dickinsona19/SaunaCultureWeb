@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { useTheme } from '../contexts/ThemeContext';
 
@@ -93,6 +94,12 @@ const CTAContainer = styled.div`
   justify-content: center;
   flex-wrap: wrap;
   margin-top: 3rem;
+  
+  @media (max-width: 480px) {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
 `;
 
 const PrimaryButton = styled.button`
@@ -130,10 +137,12 @@ const PrimaryButton = styled.button`
   @media (max-width: 480px) {
     padding: 16px 32px;
     font-size: 15px;
+    width: 100%;
+    max-width: 280px;
   }
 `;
 
-const SecondaryButton = styled.button`
+const SecondaryButton = styled(Link)`
   background: rgba(255, 255, 255, 0.1);
   color: white;
   padding: 18px 36px;
@@ -145,6 +154,10 @@ const SecondaryButton = styled.button`
   backdrop-filter: blur(10px);
   position: relative;
   overflow: hidden;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   
   &::before {
     content: '';
@@ -171,6 +184,8 @@ const SecondaryButton = styled.button`
   @media (max-width: 480px) {
     padding: 16px 32px;
     font-size: 15px;
+    width: 100%;
+    max-width: 280px;
   }
 `;
 
@@ -227,8 +242,8 @@ const Hero = () => {
           <PrimaryButton onClick={() => scrollToSection('booking')}>
             Book Your Session
           </PrimaryButton>
-          <SecondaryButton onClick={() => scrollToSection('about')}>
-            Learn More
+          <SecondaryButton to="/memberships">
+            View Memberships
           </SecondaryButton>
         </CTAContainer>
       </HeroContent>

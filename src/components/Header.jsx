@@ -28,20 +28,20 @@ const Nav = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: ${props => props.scrolled ? '15px 40px' : '20px 40px'};
+  padding: ${props => props.scrolled ? '12px 40px' : '16px 40px'};
   max-width: 1400px;
   margin: 0 auto;
   transition: padding 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   
   @media (max-width: 768px) {
-    padding: 15px 20px;
+    padding: ${props => props.scrolled ? '10px 20px' : '12px 20px'};
   }
 `;
 
 const Logo = styled(Link)`
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   cursor: pointer;
   transition: transform 0.3s ease;
   text-decoration: none;
@@ -52,72 +52,67 @@ const Logo = styled(Link)`
   
   .logo-text {
     font-family: 'Playfair Display', serif;
-    font-size: 28px;
+    font-size: 24px;
     font-weight: 600;
     color: ${props => props.theme.colors.textPrimary};
     letter-spacing: -0.5px;
+    
+    @media (max-width: 480px) {
+      font-size: 20px;
+    }
   }
   
   .logo-icon {
-    width: 32px;
-    height: 32px;
+    width: 28px;
+    height: 28px;
     background: linear-gradient(135deg, #8b7355, #a68b5b);
-    border-radius: 8px;
+    border-radius: 6px;
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
-    font-size: 16px;
-    box-shadow: 0 4px 12px rgba(139, 115, 85, 0.3);
+    font-size: 14px;
+    box-shadow: 0 3px 10px rgba(139, 115, 85, 0.3);
     transition: all 0.3s ease;
+    
+    @media (max-width: 480px) {
+      width: 24px;
+      height: 24px;
+      font-size: 12px;
+    }
   }
   
   &:hover .logo-icon {
     transform: rotate(5deg);
-    box-shadow: 0 6px 20px rgba(139, 115, 85, 0.4);
+    box-shadow: 0 4px 15px rgba(139, 115, 85, 0.4);
   }
+`;
 
-  @media (max-width: 768px) {
-    .logo-text {
-      font-size: 24px;
-    }
-    .logo-icon {
-      width: 28px;
-      height: 28px;
-      font-size: 14px;
-    }
+const DesktopNav = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  
+  @media (max-width: 968px) {
+    display: none;
   }
 `;
 
 const NavLinks = styled.ul`
   display: flex;
   list-style: none;
-  gap: 40px;
+  gap: 32px;
   align-items: center;
-  
-  @media (max-width: 768px) {
-    position: fixed;
-    top: 0;
-    right: ${props => props.isOpen ? '0' : '-100%'};
-    width: 80%;
-    height: 100vh;
-    background: ${props => props.theme.colors.backgroundCard};
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: 999;
-    box-shadow: -10px 0 30px ${props => props.theme.colors.shadow};
-    gap: 30px;
-  }
+  margin: 0;
+  padding: 0;
 `;
 
 const NavLink = styled.li`
   a {
     color: ${props => props.theme.colors.textMuted};
     font-weight: 500;
-    font-size: 15px;
-    padding: 8px 16px;
+    font-size: 14px;
+    padding: 8px 12px;
     border-radius: 6px;
     position: relative;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -127,7 +122,7 @@ const NavLink = styled.li`
       content: '';
       position: absolute;
       bottom: 2px;
-      left: 16px;
+      left: 12px;
       width: 0;
       height: 2px;
       background: linear-gradient(135deg, #8b7355, #a68b5b);
@@ -139,15 +134,8 @@ const NavLink = styled.li`
       background: rgba(139, 115, 85, 0.05);
       
       &::after {
-        width: calc(100% - 32px);
+        width: calc(100% - 24px);
       }
-    }
-  }
-
-  @media (max-width: 768px) {
-    a {
-      font-size: 18px;
-      padding: 15px 20px;
     }
   }
 `;
@@ -155,20 +143,21 @@ const NavLink = styled.li`
 const HeaderActions = styled.div`
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 16px;
 `;
 
 const CTAButton = styled.button`
   background: linear-gradient(135deg, #8b7355, #a68b5b);
   color: white;
-  padding: 12px 24px;
-  border-radius: 8px;
-  font-size: 14px;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.5px;
-  box-shadow: 0 4px 12px rgba(139, 115, 85, 0.3);
+  box-shadow: 0 3px 10px rgba(139, 115, 85, 0.3);
   position: relative;
   overflow: hidden;
+  white-space: nowrap;
   
   &::before {
     content: '';
@@ -183,44 +172,127 @@ const CTAButton = styled.button`
   
   &:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(139, 115, 85, 0.4);
+    box-shadow: 0 6px 20px rgba(139, 115, 85, 0.4);
     
     &::before {
       left: 100%;
     }
   }
+`;
 
-  @media (max-width: 768px) {
-    display: none;
+const MobileMenuContainer = styled.div`
+  display: none;
+  
+  @media (max-width: 968px) {
+    display: flex;
+    align-items: center;
+    gap: 12px;
   }
 `;
 
 const MobileToggle = styled.button`
-  display: none;
   background: none;
   color: ${props => props.theme.colors.textPrimary};
-  font-size: 24px;
+  font-size: 20px;
   z-index: 1001;
   padding: 8px;
   border-radius: 6px;
   transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
   
   &:hover {
     background: rgba(139, 115, 85, 0.1);
-    transform: scale(1.1);
-  }
-  
-  @media (max-width: 768px) {
-    display: block;
+    transform: scale(1.05);
   }
 `;
 
-const MobileCTA = styled(CTAButton)`
-  @media (max-width: 768px) {
+const MobileMenu = styled.div`
+  position: fixed;
+  top: 0;
+  right: ${props => props.isOpen ? '0' : '-100%'};
+  width: 85%;
+  max-width: 400px;
+  height: 100vh;
+  background: ${props => props.theme.colors.backgroundCard};
+  transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 999;
+  box-shadow: -10px 0 30px ${props => props.theme.colors.shadow};
+  display: flex;
+  flex-direction: column;
+  padding: 80px 0 40px;
+  border-left: 1px solid ${props => props.theme.colors.border};
+`;
+
+const MobileNavLinks = styled.ul`
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 0 30px;
+`;
+
+const MobileNavLink = styled.li`
+  a {
     display: block;
-    margin-top: 20px;
-    padding: 15px 30px;
+    color: ${props => props.theme.colors.textMuted};
+    font-weight: 500;
     font-size: 16px;
+    padding: 16px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+    
+    &:hover {
+      color: #8b7355;
+      background: rgba(139, 115, 85, 0.05);
+      border-color: rgba(139, 115, 85, 0.1);
+    }
+  }
+`;
+
+const MobileActions = styled.div`
+  padding: 30px;
+  border-top: 1px solid ${props => props.theme.colors.border};
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+`;
+
+const MobileCTAButton = styled(CTAButton)`
+  width: 100%;
+  padding: 16px 24px;
+  font-size: 15px;
+  justify-content: center;
+`;
+
+const MobileThemeToggle = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const Overlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 998;
+  opacity: ${props => props.isOpen ? '1' : '0'};
+  visibility: ${props => props.isOpen ? 'visible' : 'hidden'};
+  transition: all 0.3s ease;
+  
+  @media (min-width: 969px) {
+    display: none;
   }
 `;
 
@@ -232,12 +304,17 @@ const Header = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      setScrolled(window.scrollY > 20);
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Close mobile menu when route changes
+  useEffect(() => {
+    setIsOpen(false);
+  }, [location.pathname]);
 
   const scrollToSection = (sectionId) => {
     if (location.pathname !== '/') {
@@ -256,50 +333,92 @@ const Header = () => {
     setIsOpen(false);
   };
 
+  const handleOverlayClick = () => {
+    setIsOpen(false);
+  };
+
   return (
-    <HeaderContainer scrolled={scrolled}>
-      <Nav scrolled={scrolled}>
-        <Logo to="/">
-          <div className="logo-icon">🔥</div>
-          <span className="logo-text">Sauna Culture</span>
-        </Logo>
-        
-        <NavLinks isOpen={isOpen}>
-          <NavLink>
+    <>
+      <HeaderContainer scrolled={scrolled}>
+        <Nav scrolled={scrolled}>
+          <Logo to="/" onClick={() => setIsOpen(false)}>
+            <div className="logo-icon">🔥</div>
+            <span className="logo-text">Sauna Culture</span>
+          </Logo>
+          
+          <DesktopNav>
+            <NavLinks>
+              <NavLink>
+                <Link to="/">Home</Link>
+              </NavLink>
+              <NavLink>
+                <a href="#about" onClick={() => scrollToSection('about')}>About</a>
+              </NavLink>
+              <NavLink>
+                <a href="#services" onClick={() => scrollToSection('services')}>Services</a>
+              </NavLink>
+              <NavLink>
+                <Link to="/memberships">Memberships</Link>
+              </NavLink>
+              <NavLink>
+                <a href="#gallery" onClick={() => scrollToSection('gallery')}>Gallery</a>
+              </NavLink>
+              <NavLink>
+                <a href="#contact" onClick={() => scrollToSection('contact')}>Contact</a>
+              </NavLink>
+            </NavLinks>
+            
+            <HeaderActions>
+              <ThemeToggle />
+              <CTAButton onClick={() => scrollToSection('booking')}>
+                Book Session
+              </CTAButton>
+            </HeaderActions>
+          </DesktopNav>
+          
+          <MobileMenuContainer>
+            <ThemeToggle />
+            <MobileToggle onClick={() => setIsOpen(!isOpen)}>
+              {isOpen ? '✕' : '☰'}
+            </MobileToggle>
+          </MobileMenuContainer>
+        </Nav>
+      </HeaderContainer>
+
+      <Overlay isOpen={isOpen} onClick={handleOverlayClick} />
+      
+      <MobileMenu isOpen={isOpen}>
+        <MobileNavLinks>
+          <MobileNavLink>
             <Link to="/" onClick={handleNavClick}>Home</Link>
-          </NavLink>
-          <NavLink>
+          </MobileNavLink>
+          <MobileNavLink>
             <a href="#about" onClick={() => scrollToSection('about')}>About</a>
-          </NavLink>
-          <NavLink>
+          </MobileNavLink>
+          <MobileNavLink>
             <a href="#services" onClick={() => scrollToSection('services')}>Services</a>
-          </NavLink>
-          <NavLink>
+          </MobileNavLink>
+          <MobileNavLink>
             <Link to="/memberships" onClick={handleNavClick}>Memberships</Link>
-          </NavLink>
-          <NavLink>
+          </MobileNavLink>
+          <MobileNavLink>
             <a href="#gallery" onClick={() => scrollToSection('gallery')}>Gallery</a>
-          </NavLink>
-          <NavLink>
+          </MobileNavLink>
+          <MobileNavLink>
             <a href="#contact" onClick={() => scrollToSection('contact')}>Contact</a>
-          </NavLink>
-          <MobileCTA onClick={() => scrollToSection('booking')}>
-            Book Session
-          </MobileCTA>
-        </NavLinks>
+          </MobileNavLink>
+        </MobileNavLinks>
         
-        <HeaderActions>
-          <ThemeToggle />
-          <CTAButton onClick={() => scrollToSection('booking')}>
+        <MobileActions>
+          <MobileCTAButton onClick={() => scrollToSection('booking')}>
             Book Session
-          </CTAButton>
-        </HeaderActions>
-        
-        <MobileToggle onClick={() => setIsOpen(!isOpen)}>
-          {isOpen ? '✕' : '☰'}
-        </MobileToggle>
-      </Nav>
-    </HeaderContainer>
+          </MobileCTAButton>
+          <MobileCTAButton as={Link} to="/memberships" onClick={handleNavClick}>
+            View Memberships
+          </MobileCTAButton>
+        </MobileActions>
+      </MobileMenu>
+    </>
   );
 };
 
