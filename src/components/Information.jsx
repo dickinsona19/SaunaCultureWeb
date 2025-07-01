@@ -1,9 +1,10 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import styled from 'styled-components';
+import { useTheme } from '../contexts/ThemeContext';
 
 const InfoContainer = styled.section`
   padding: 120px 0;
-  background: #f8f8f8;
+  background: ${props => props.theme.colors.backgroundSecondary};
   position: relative;
   overflow: hidden;
 `;
@@ -37,7 +38,7 @@ const TextContent = styled.div`
 
 const SectionTitle = styled.h2`
   font-size: 3.5rem;
-  color: #1a1a1a;
+  color: ${props => props.theme.colors.textPrimary};
   margin-bottom: 1.5rem;
   font-weight: 500;
   line-height: 1.2;
@@ -61,7 +62,7 @@ const SectionTitle = styled.h2`
 
 const SectionDescription = styled.p`
   font-size: 1.2rem;
-  color: #6a6a6a;
+  color: ${props => props.theme.colors.textSecondary};
   line-height: 1.7;
   margin-bottom: 2.5rem;
   margin-top: 2rem;
@@ -73,7 +74,7 @@ const FeaturesList = styled.ul`
   
   li {
     padding: 15px 0;
-    color: #4a4a4a;
+    color: ${props => props.theme.colors.textMuted};
     position: relative;
     padding-left: 35px;
     font-size: 1.1rem;
@@ -147,7 +148,7 @@ const ImageContainer = styled.div`
   border-radius: 20px;
   overflow: hidden;
   height: 550px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 20px 60px ${props => props.theme.colors.shadowHover};
   
   &::before {
     content: '';
@@ -195,7 +196,7 @@ const BenefitsSection = styled.div`
 
 const BenefitsTitle = styled.h3`
   font-size: 2.5rem;
-  color: #1a1a1a;
+  color: ${props => props.theme.colors.textPrimary};
   margin-bottom: 3rem;
   font-weight: 500;
 `;
@@ -207,14 +208,15 @@ const BenefitsGrid = styled.div`
 `;
 
 const BenefitCard = styled.div`
-  background: white;
+  background: ${props => props.theme.colors.backgroundCard};
   padding: 50px 35px;
   border-radius: 16px;
   text-align: center;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 30px ${props => props.theme.colors.shadow};
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
+  border: 1px solid ${props => props.theme.colors.border};
   
   &::before {
     content: '';
@@ -230,7 +232,7 @@ const BenefitCard = styled.div`
   
   &:hover {
     transform: translateY(-12px);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 20px 60px ${props => props.theme.colors.shadowHover};
     
     &::before {
       opacity: 1;
@@ -260,18 +262,20 @@ const BenefitIcon = styled.div`
 
 const BenefitTitle = styled.h4`
   font-size: 1.4rem;
-  color: #1a1a1a;
+  color: ${props => props.theme.colors.textPrimary};
   margin-bottom: 1rem;
   font-weight: 500;
 `;
 
 const BenefitDescription = styled.p`
-  color: #6a6a6a;
+  color: ${props => props.theme.colors.textSecondary};
   line-height: 1.6;
   font-size: 1rem;
 `;
 
 const Information = () => {
+  const theme = useTheme();
+
   const benefits = [
     {
       icon: '💪',

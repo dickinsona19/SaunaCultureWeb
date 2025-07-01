@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import styled from 'styled-components';
+import { ThemeProvider as StyledThemeProvider } from 'styled-components';
+import { ThemeProvider, useTheme } from './contexts/ThemeContext';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Information from './components/Information';
@@ -11,10 +12,12 @@ import FAQ from './components/FAQ';
 import Footer from './components/Footer';
 import Memberships from './components/Memberships';
 import GlobalStyles from './styles/GlobalStyles';
+import styled from 'styled-components';
 
 const AppContainer = styled.div`
   min-height: 100vh;
-  background: #fafafa;
+  background: ${props => props.theme.colors.background};
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 `;
 
 const HomePage = () => (
@@ -28,19 +31,31 @@ const HomePage = () => (
   </>
 );
 
+const AppContent = () => {
+  const theme = useTheme();
+
+  return (
+    <StyledThemeProvider theme={theme}>
+      <Router>
+        <AppContainer>
+          <GlobalStyles />
+          <Header />
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/memberships" element={<Memberships />} />
+          </Routes>
+          <Footer />
+        </AppContainer>
+      </Router>
+    </StyledThemeProvider>
+  );
+};
+
 function App() {
   return (
-    <Router>
-      <AppContainer>
-        <GlobalStyles />
-        <Header />
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/memberships" element={<Memberships />} />
-        </Routes>
-        <Footer />
-      </AppContainer>
-    </Router>
+    <ThemeProvider>
+      <AppContent />
+    </ThemeProvider>
   );
 }
 

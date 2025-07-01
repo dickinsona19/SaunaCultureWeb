@@ -1,10 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
+import { useTheme } from '../contexts/ThemeContext';
 
 const HeroSection = styled.section`
   min-height: 100vh;
-  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)), 
-              url('/BF3A9725-Edit-1.webp') center/cover;
+  background: linear-gradient(
+    ${props => props.theme.isDarkMode 
+      ? 'rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)' 
+      : 'rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)'
+    }), 
+    url('/BF3A9725-Edit-1.webp') center/cover;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -198,6 +203,8 @@ const ScrollIndicator = styled.div`
 `;
 
 const Hero = () => {
+  const theme = useTheme();
+
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {

@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { useTheme } from '../contexts/ThemeContext';
 
 const BookingContainer = styled.section`
   padding: 120px 0;
-  background: #fafafa;
+  background: ${props => props.theme.colors.background};
   position: relative;
   
   &::before {
@@ -40,7 +41,7 @@ const SectionHeader = styled.div`
 
 const SectionTitle = styled.h2`
   font-size: 3.5rem;
-  color: #1a1a1a;
+  color: ${props => props.theme.colors.textPrimary};
   margin-bottom: 1.5rem;
   font-weight: 500;
   position: relative;
@@ -64,7 +65,7 @@ const SectionTitle = styled.h2`
 
 const SectionSubtitle = styled.p`
   font-size: 1.2rem;
-  color: #6a6a6a;
+  color: ${props => props.theme.colors.textSecondary};
   line-height: 1.6;
   font-weight: 400;
   margin-top: 2rem;
@@ -83,12 +84,13 @@ const ServicesGrid = styled.div`
 `;
 
 const ServiceCard = styled.div`
-  background: white;
+  background: ${props => props.theme.colors.backgroundCard};
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 20px ${props => props.theme.colors.shadow};
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
+  border: 1px solid ${props => props.theme.colors.border};
   
   &::before {
     content: '';
@@ -105,7 +107,7 @@ const ServiceCard = styled.div`
   
   &:hover {
     transform: translateY(-12px);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 20px 60px ${props => props.theme.colors.shadowHover};
     
     &::before {
       opacity: 1;
@@ -156,13 +158,13 @@ const CardContent = styled.div`
 
 const CardTitle = styled.h3`
   font-size: 1.6rem;
-  color: #1a1a1a;
+  color: ${props => props.theme.colors.textPrimary};
   margin-bottom: 1rem;
   font-weight: 500;
 `;
 
 const CardDescription = styled.p`
-  color: #6a6a6a;
+  color: ${props => props.theme.colors.textSecondary};
   margin-bottom: 1.5rem;
   line-height: 1.6;
 `;
@@ -173,7 +175,7 @@ const CardFeatures = styled.ul`
   
   li {
     padding: 10px 0;
-    color: #4a4a4a;
+    color: ${props => props.theme.colors.textMuted};
     position: relative;
     padding-left: 25px;
     font-weight: 500;
@@ -195,7 +197,7 @@ const CardPrice = styled.div`
   align-items: center;
   margin-bottom: 1.5rem;
   padding: 20px;
-  background: #f8f8f8;
+  background: ${props => props.theme.colors.backgroundSecondary};
   border-radius: 12px;
   
   .price {
@@ -206,7 +208,7 @@ const CardPrice = styled.div`
   }
   
   .duration {
-    color: #6a6a6a;
+    color: ${props => props.theme.colors.textSecondary};
     font-size: 0.9rem;
     font-weight: 500;
   }
@@ -309,6 +311,7 @@ const CTAButton = styled.button`
 
 const BookingSection = () => {
   const [hoveredCard, setHoveredCard] = useState(null);
+  const theme = useTheme();
 
   const services = [
     {

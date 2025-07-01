@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
+import { useTheme } from '../contexts/ThemeContext';
+import ThemeToggle from './ThemeToggle';
 
 const HeaderContainer = styled.header`
   position: fixed;
@@ -9,16 +11,16 @@ const HeaderContainer = styled.header`
   right: 0;
   z-index: 1000;
   background: ${props => props.scrolled 
-    ? 'rgba(255, 255, 255, 0.95)' 
-    : 'rgba(255, 255, 255, 0.9)'};
+    ? props.theme.colors.backgroundOverlay 
+    : props.theme.colors.backgroundOverlay};
   backdrop-filter: blur(20px);
   border-bottom: ${props => props.scrolled 
-    ? '1px solid rgba(139, 115, 85, 0.1)' 
+    ? `1px solid ${props.theme.colors.border}` 
     : 'none'};
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   padding: 0;
   box-shadow: ${props => props.scrolled 
-    ? '0 4px 20px rgba(0, 0, 0, 0.08)' 
+    ? `0 4px 20px ${props.theme.colors.shadow}` 
     : 'none'};
 `;
 
@@ -52,7 +54,7 @@ const Logo = styled(Link)`
     font-family: 'Playfair Display', serif;
     font-size: 28px;
     font-weight: 600;
-    color: #1a1a1a;
+    color: ${props => props.theme.colors.textPrimary};
     letter-spacing: -0.5px;
   }
   
@@ -99,20 +101,20 @@ const NavLinks = styled.ul`
     right: ${props => props.isOpen ? '0' : '-100%'};
     width: 80%;
     height: 100vh;
-    background: white;
+    background: ${props => props.theme.colors.backgroundCard};
     flex-direction: column;
     justify-content: center;
     align-items: center;
     transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 999;
-    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
+    box-shadow: -10px 0 30px ${props => props.theme.colors.shadow};
     gap: 30px;
   }
 `;
 
 const NavLink = styled.li`
   a {
-    color: #4a4a4a;
+    color: ${props => props.theme.colors.textMuted};
     font-weight: 500;
     font-size: 15px;
     padding: 8px 16px;
@@ -148,6 +150,12 @@ const NavLink = styled.li`
       padding: 15px 20px;
     }
   }
+`;
+
+const HeaderActions = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 20px;
 `;
 
 const CTAButton = styled.button`
@@ -190,7 +198,7 @@ const CTAButton = styled.button`
 const MobileToggle = styled.button`
   display: none;
   background: none;
-  color: #1a1a1a;
+  color: ${props => props.theme.colors.textPrimary};
   font-size: 24px;
   z-index: 1001;
   padding: 8px;
@@ -220,6 +228,7 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+  const theme = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -279,9 +288,12 @@ const Header = () => {
           </MobileCTA>
         </NavLinks>
         
-        <CTAButton onClick={() => scrollToSection('booking')}>
-          Book Session
-        </CTAButton>
+        <HeaderActions>
+          <ThemeToggle />
+          <CTAButton onClick={() => scrollToSection('booking')}>
+            Book Session
+          </CTAButton>
+        </HeaderActions>
         
         <MobileToggle onClick={() => setIsOpen(!isOpen)}>
           {isOpen ? '✕' : '☰'}

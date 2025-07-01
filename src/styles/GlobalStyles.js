@@ -9,15 +9,20 @@ const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
   }
 
+  html {
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
   body {
     font-family: 'Inter', sans-serif;
     line-height: 1.6;
-    color: #1a1a1a;
+    color: ${props => props.theme.colors.textPrimary};
     overflow-x: hidden;
     scroll-behavior: smooth;
-    background: #fafafa;
+    background: ${props => props.theme.colors.background};
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -26,12 +31,13 @@ const GlobalStyles = createGlobalStyle`
     line-height: 1.2;
     margin-bottom: 1rem;
     letter-spacing: -0.02em;
+    color: ${props => props.theme.colors.textPrimary};
   }
 
   p {
     margin-bottom: 1rem;
     font-weight: 400;
-    color: #4a4a4a;
+    color: ${props => props.theme.colors.textMuted};
   }
 
   a {
@@ -64,7 +70,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   ::-webkit-scrollbar-track {
-    background: #f1f1f1;
+    background: ${props => props.theme.colors.backgroundSecondary};
     border-radius: 4px;
   }
 
@@ -184,25 +190,31 @@ const GlobalStyles = createGlobalStyle`
   }
 
   .glass-effect {
-    background: rgba(255, 255, 255, 0.1);
+    background: ${props => props.theme.isDarkMode 
+      ? 'rgba(255, 255, 255, 0.05)' 
+      : 'rgba(255, 255, 255, 0.1)'};
     backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid ${props => props.theme.isDarkMode 
+      ? 'rgba(255, 255, 255, 0.1)' 
+      : 'rgba(255, 255, 255, 0.2)'};
   }
 
   .shadow-luxury {
     box-shadow: 
-      0 4px 20px rgba(0, 0, 0, 0.08),
-      0 1px 3px rgba(0, 0, 0, 0.1);
+      0 4px 20px ${props => props.theme.colors.shadow},
+      0 1px 3px ${props => props.theme.colors.shadow};
   }
 
   .shadow-luxury-hover {
     box-shadow: 
-      0 12px 40px rgba(0, 0, 0, 0.15),
-      0 4px 12px rgba(0, 0, 0, 0.1);
+      0 12px 40px ${props => props.theme.colors.shadowHover},
+      0 4px 12px ${props => props.theme.colors.shadow};
   }
 
   .text-shadow-soft {
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    text-shadow: 0 2px 8px ${props => props.theme.isDarkMode 
+      ? 'rgba(0, 0, 0, 0.5)' 
+      : 'rgba(0, 0, 0, 0.1)'};
   }
 
   .section-padding {
@@ -224,7 +236,7 @@ const GlobalStyles = createGlobalStyle`
   /* Selection */
   ::selection {
     background: rgba(139, 115, 85, 0.2);
-    color: #1a1a1a;
+    color: ${props => props.theme.colors.textPrimary};
   }
 
   /* Smooth transitions for all interactive elements */
@@ -233,6 +245,11 @@ const GlobalStyles = createGlobalStyle`
   input,
   textarea {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Dark mode specific styles */
+  .dark {
+    color-scheme: dark;
   }
 `;
 
