@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useTheme } from '../contexts/ThemeContext';
-
+import saunagallery from '../assets/saunagal.webp';
 const GalleryContainer = styled.section`
   padding: 120px 0;
   background: ${props => props.theme.colors.backgroundCard};
@@ -166,8 +166,7 @@ const PlaceholderImage = styled.div`
     left: 0;
     right: 0;
     bottom: 0;
-    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='20' cy='20' r='2' fill='%23ffffff' opacity='0.1'/%3E%3Ccircle cx='80' cy='80' r='2' fill='%23ffffff' opacity='0.1'/%3E%3Ccircle cx='80' cy='20' r='2' fill='%23ffffff' opacity='0.1'/%3E%3Ccircle cx='20' cy='80' r='2' fill='%23ffffff' opacity='0.1'/%3E%3C/svg%3E") repeat;
-  }
+ }
 `;
 
 const Gallery = () => {
@@ -180,11 +179,11 @@ const Gallery = () => {
       category: 'saunas',
       title: 'Traditional Finnish Sauna',
       description: 'Authentic cedar wood construction with premium finishes',
-      image: 'https://images.pexels.com/photos/3188/wood-light-vacation-picnic.jpg?auto=compress&cs=tinysrgb&w=800'
+      image: saunagallery
     },
     {
       id: 2,
-      category: 'facilities',
+      category: 'coldbat',
       title: 'Relaxation Lounge',
       description: 'Comfortable spaces for post-sauna relaxation',
       image: 'https://images.pexels.com/photos/1029604/pexels-photo-1029604.jpeg?auto=compress&cs=tinysrgb&w=800'
@@ -198,14 +197,14 @@ const Gallery = () => {
     },
     {
       id: 4,
-      category: 'exterior',
+      category: 'coldbat',
       title: 'Ocean View Deck',
       description: 'Stunning views of the coastline',
       image: 'https://images.pexels.com/photos/1029604/pexels-photo-1029604.jpeg?auto=compress&cs=tinysrgb&w=800'
     },
     {
       id: 5,
-      category: 'facilities',
+      category: 'coldbat',
       title: 'Premium Changing Rooms',
       description: 'Luxurious amenities and comfortable spaces',
       image: 'https://images.pexels.com/photos/3188/wood-light-vacation-picnic.jpg?auto=compress&cs=tinysrgb&w=800'
@@ -222,8 +221,7 @@ const Gallery = () => {
   const filters = [
     { key: 'all', label: 'All' },
     { key: 'saunas', label: 'Saunas' },
-    { key: 'facilities', label: 'Facilities' },
-    { key: 'exterior', label: 'Exterior' }
+    { key: 'coldbath', label: 'Cold Bath' }
   ];
 
   const filteredItems = activeFilter === 'all' 

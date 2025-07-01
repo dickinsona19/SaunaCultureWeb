@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useTheme } from '../contexts/ThemeContext';
-
+import publicsauna from '../assets/publicsauna.webp';
 const BookingContainer = styled.section`
   padding: 120px 0;
   background: ${props => props.theme.colors.background};
@@ -325,32 +325,32 @@ const BookingSection = () => {
 
   const services = [
     {
-      title: 'Traditional Finnish Sauna',
-      description: 'Experience authentic Finnish sauna culture with premium cedar wood interiors and traditional heating methods.',
-      features: ['90°C Temperature', 'Cedar Wood Interior', 'Ocean Views', 'Aromatherapy Options'],
-      price: '$85',
-      duration: '60 minutes',
+      title: 'Shared Sauna/Ice Bath',
+      description: 'Enjoy a 90 minute sauna/ice bath session in our main area. This pass also includes access to our locker room saunas and our lounge complete with heated benches.',
+      features: ['Public Sauna', 'Cold Plunge', 'Heated Benches'],
+      price: '$40',
+      duration: '90 minutes',
       badge: 'Most Popular',
-      image: 'https://images.pexels.com/photos/3188/wood-light-vacation-picnic.jpg?auto=compress&cs=tinysrgb&w=800'
+      image: publicsauna
     },
     {
-      title: 'Infrared Wellness Suite',
-      description: 'Modern infrared technology for deep tissue healing and detoxification in a luxurious setting.',
-      features: ['60°C Temperature', 'Full Spectrum Infrared', 'Chromotherapy', 'Private Suite'],
-      price: '$95',
-      duration: '45 minutes',
+      title: 'Private Sauna/Ice Bath',
+      description: 'Get exclusive access when you book our private Ice Bath/Sauna Suite for 90 minutes, with the price designed for 2 people (you can add a friend if you wish). Your session includes access to our entire facilities, including the lounge area and heated benches. Up to 4 people allowed.',
+      features: ['Private Suite','Add up to 3 friends', 'Cold Plunge'],
+      price: '$125',
+      duration: '90 minutes',
       badge: 'Premium',
       image: 'https://images.pexels.com/photos/1029604/pexels-photo-1029604.jpeg?auto=compress&cs=tinysrgb&w=800'
     },
-    {
-      title: 'Couples Retreat',
-      description: 'Share the wellness experience with your partner in our exclusive couples sauna suite.',
-      features: ['Private Suite', 'Champagne Service', 'Extended Session', 'Relaxation Area'],
-      price: '$180',
-      duration: '90 minutes',
-      badge: 'Exclusive',
-      image: 'https://images.pexels.com/photos/3188/wood-light-vacation-picnic.jpg?auto=compress&cs=tinysrgb&w=800'
-    }
+    // {
+    //   title: 'Couples Retreat',
+    //   description: 'Share the wellness experience with your partner in our exclusive couples sauna suite.',
+    //   features: ['Private Suite', 'Champagne Service', 'Extended Session', 'Relaxation Area'],
+    //   price: '$180',
+    //   duration: '90 minutes',
+    //   badge: 'Exclusive',
+    //   image: 'https://images.pexels.com/photos/3188/wood-light-vacation-picnic.jpg?auto=compress&cs=tinysrgb&w=800'
+    // }
   ];
 
   return (

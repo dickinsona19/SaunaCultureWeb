@@ -347,48 +347,28 @@ const Memberships = () => {
       period: '/month',
       description: 'Perfect for occasional wellness seekers',
       features: [
-        '4 sauna sessions per month',
-        'Access during off-peak hours',
-        'Towel and robe service',
-        'Basic relaxation area access',
-        'Online booking system',
-        'Guest pass (1 per month)'
+        '4 sauna sessions per month'
       ],
       featured: false
     },
     {
       title: 'Premium',
-      price: 149,
+      price: 165,
       period: '/month',
       description: 'Our most popular choice for regular wellness',
       features: [
-        'Unlimited sauna sessions',
-        'Access during all hours',
-        'Premium towel and robe service',
-        'Full relaxation area access',
-        'Priority booking',
-        'Guest passes (2 per month)',
-        'Wellness consultation included',
-        'Special events access'
+        '8 visits per month'
       ],
       featured: true
     },
     {
       title: 'Elite',
-      price: 249,
+      price: 185,
       period: '/month',
       description: 'Ultimate luxury wellness experience',
       features: [
-        'Unlimited premium sessions',
-        '24/7 access availability',
-        'Luxury amenities package',
-        'Private relaxation suite access',
-        'Concierge booking service',
-        'Unlimited guest passes',
-        'Monthly wellness consultation',
-        'VIP events and workshops',
-        'Complimentary refreshments',
-        'Personal wellness tracking'
+        '15 visits per month',
+        '1 Private Sauna/Ice Bath Session per month'
       ],
       featured: false
     }
@@ -410,11 +390,11 @@ const Memberships = () => {
       title: 'Community Access',
       description: 'Join our wellness community with exclusive events, workshops, and member gatherings.'
     },
-    {
-      icon: '🏆',
-      title: 'Expert Guidance',
-      description: 'Receive personalized wellness consultations from our certified sauna specialists.'
-    }
+    // {
+    //   icon: '🏆',
+    //   title: 'Expert Guidance',
+    //   description: 'Receive personalized wellness consultations from our certified sauna specialists.'
+    // }
   ];
 
   const faqs = [
@@ -488,7 +468,7 @@ const Memberships = () => {
           </BenefitsGrid>
         </BenefitsSection>
         
-        <FAQSection>
+        {/* <FAQSection>
           <FAQTitle>Membership FAQ</FAQTitle>
           {faqs.map((faq, index) => (
             <FAQItem key={index}>
@@ -496,7 +476,7 @@ const Memberships = () => {
               <FAQAnswer>{faq.answer}</FAQAnswer>
             </FAQItem>
           ))}
-        </FAQSection>
+        </FAQSection> */}
       </Container>
     </MembershipsContainer>
   );

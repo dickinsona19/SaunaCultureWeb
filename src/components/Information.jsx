@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useTheme } from '../contexts/ThemeContext';
+import mainroom from '../assets/mainroom.webp';
 
 const InfoContainer = styled.section`
   padding: 120px 0;
@@ -184,7 +185,10 @@ const PlaceholderImage = styled.div`
     left: 0;
     right: 0;
     bottom: 0;
-    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='20' cy='20' r='2' fill='%23ffffff' opacity='0.1'/%3E%3Ccircle cx='80' cy='80' r='2' fill='%23ffffff' opacity='0.1'/%3E%3Ccircle cx='80' cy='20' r='2' fill='%23ffffff' opacity='0.1'/%3E%3Ccircle cx='20' cy='80' r='2' fill='%23ffffff' opacity='0.1'/%3E%3C/svg%3E") repeat;
+    background: url(${mainroom});
+    background-size: cover;
+    background-position: 25% 50%;
+    background-repeat: no-repeat;
     animation: float 8s ease-in-out infinite;
   }
 `;
@@ -305,21 +309,20 @@ const Information = () => {
         <ContentGrid>
           <TextContent>
             <SectionTitle>
-              The Art of Authentic Wellness
+              The Authentic Sauna Experience
             </SectionTitle>
             <SectionDescription>
-              We're passionate about bringing you the purest form of Finnish sauna culture. 
-              Our commitment to authenticity and excellence makes us your premier destination for wellness and relaxation.
+              We're dedicated to offering the most authentic experience of Ancient Greek, Roman, Korean, and Finnish sauna traditions in Charlotte and beyond.
             </SectionDescription>
             <FeaturesList>
               <li>Traditional Finnish construction methods</li>
               <li>Premium Nordic cedar wood interiors</li>
-              <li>Ocean-view relaxation areas</li>
-              <li>Expert wellness consultations</li>
-              <li>Personalized experience programs</li>
+              <li>Acneit Greece Laconica</li>
+              <li>Korean Healing</li>
+              <li>Roman Sauna Culture</li>
             </FeaturesList>
             <LearnMoreButton>
-              Discover Our Story
+              Book Session
             </LearnMoreButton>
           </TextContent>
           

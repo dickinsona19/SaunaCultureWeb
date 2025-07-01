@@ -254,19 +254,7 @@ const Footer = () => {
             </ul>
           </FooterSection>
           
-          <FooterSection>
-            <h3>Stay Connected</h3>
-            <p>Subscribe to our newsletter for wellness tips and exclusive offers.</p>
-            <NewsletterForm>
-              <NewsletterInput 
-                type="email" 
-                placeholder="Enter your email"
-              />
-              <NewsletterButton>
-                Subscribe
-              </NewsletterButton>
-            </NewsletterForm>
-          </FooterSection>
+ 
         </FooterContent>
         
         <FooterBottom>

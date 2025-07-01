@@ -231,11 +231,10 @@ const Hero = () => {
     <HeroSection id="home">
       <HeroContent>
         <HeroTitle>
-          Elevate Your <span className="highlight">Wellness</span> Experience
+          ESCAPE THE <span className="highlight">CHAOS</span>
         </HeroTitle>
         <HeroSubtitle>
-          Discover the perfect harmony of traditional Finnish sauna culture and modern luxury. 
-          Immerse yourself in a transformative wellness journey by the ocean.
+        Sauna Culture, where the heat is real, the cold hits harder, and the vibes are always chill. Sauna, cold plunge, and community—this is your escape from the chaos.
         </HeroSubtitle>
         
         <CTAContainer>

@@ -265,8 +265,8 @@ const FindUs = () => {
               <ContactDetails>
                 <ContactLabel>Address</ContactLabel>
                 <ContactText>
-                  123 Wellness Drive<br />
-                  Sunset Bay, CA 90210
+                  274 S Sharon Amity Rd<br />
+                  Unit 1, Charlotte, NC 28211
                 </ContactText>
               </ContactDetails>
             </ContactItem>
@@ -275,7 +275,7 @@ const FindUs = () => {
               <ContactIcon>📞</ContactIcon>
               <ContactDetails>
                 <ContactLabel>Phone</ContactLabel>
-                <ContactText>(555) 123-SAUNA</ContactText>
+                <ContactText>(704) 222-6133</ContactText>
               </ContactDetails>
             </ContactItem>
             
@@ -287,13 +287,7 @@ const FindUs = () => {
               </ContactDetails>
             </ContactItem>
             
-            <ContactItem>
-              <ContactIcon>🌐</ContactIcon>
-              <ContactDetails>
-                <ContactLabel>Website</ContactLabel>
-                <ContactText>www.saunaculture.com</ContactText>
-              </ContactDetails>
-            </ContactItem>
+          
           </ContactInfo>
           
           <MapContainer>
@@ -318,26 +312,6 @@ const FindUs = () => {
                 <TimeLabel>{item.time}</TimeLabel>
               </HoursItem>
             ))}
-          </HoursCard>
-          
-          <HoursCard>
-            <HoursTitle>Special Services</HoursTitle>
-            <HoursItem>
-              <DayLabel>Private Sessions</DayLabel>
-              <TimeLabel>By Appointment</TimeLabel>
-            </HoursItem>
-            <HoursItem>
-              <DayLabel>Group Bookings</DayLabel>
-              <TimeLabel>24hr Notice</TimeLabel>
-            </HoursItem>
-            <HoursItem>
-              <DayLabel>Wellness Consultation</DayLabel>
-              <TimeLabel>Weekdays Only</TimeLabel>
-            </HoursItem>
-            <HoursItem>
-              <DayLabel>Corporate Events</DayLabel>
-              <TimeLabel>Custom Schedule</TimeLabel>
-            </HoursItem>
           </HoursCard>
         </HoursGrid>
       </Container>

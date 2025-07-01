@@ -177,37 +177,34 @@ const FAQ = () => {
 
   const faqData = [
     {
-      question: "What should I bring to my sauna session?",
-      answer: "We provide premium towels, robes, and all necessary amenities. Simply bring yourself and comfortable clothing for before and after your session. We recommend staying hydrated, so feel free to bring a water bottle."
+      question: "What is Sauna Culture?",
+      answer: "Sauna Culture is a community and tradition centered around saunas from various cultures worldwide. It aims to synthesize these traditions and practices, making them accessible in Charlotte and beyond. Sauna Culture prioritizes physical recovery and communal togetherness."
     },
     {
-      question: "How long are the sauna sessions?",
-      answer: "Our standard sessions range from 45 to 90 minutes, depending on the service you choose. This includes time for relaxation and gradual temperature adjustment. First-time visitors receive a complimentary orientation and consultation."
+      question: "Where are you located?",
+      answer: "We are located at 274 S Sharon Amity Rd #1, Charlotte, NC 28211 in Cotswold shopping Center. Our space is located above Y2 Yoga."
     },
     {
-      question: "Is it safe for beginners?",
-      answer: "Absolutely. Our certified wellness professionals will guide you through your first experience, ensuring your comfort and safety. We start with lower temperatures and shorter durations, gradually building up as you become more accustomed to the heat."
+      question: "What should I bring?",
+      answer: "The only required item is a clean bathing suit however we also recommend you bring a refillable water bottle."
     },
     {
-      question: "What makes your location special?",
-      answer: "Our unique oceanfront location offers stunning views and the natural cooling effect of sea breezes. The combination of traditional Finnish sauna culture with our coastal setting creates an unparalleled wellness experience."
+      question: "Are there locker rooms available?",
+      answer: "Yes each guest will have access to a men’s and women’s locker room." 
     },
     {
-      question: "Do you offer group sessions?",
-      answer: "Yes, we offer private group sessions for up to 8 people. These are perfect for friends, families, or corporate wellness events. Group bookings include special pricing and can be customized with additional amenities."
+      question: "How can I become a member of Sauna Culture?",
+      answer: "Membership options are available on our website. Simply visit https://sauna-culture.com/memberships to explore our membership plans and benefits. We offer flexible membership options to suit your needs."
     },
     {
-      question: "What are your cancellation policies?",
-      answer: "We understand that plans change. You can cancel or reschedule up to 4 hours before your session without any fees. For memberships, we offer flexible pause options for vacations or extended absences."
-    },
+      question: "Are there any health precautions to consider before using the saunas?",
+      answer: "It’s always recommended to consult with your healthcare provider before starting any new wellness routine, including sauna use. Additionally, please follow our guidelines for safe sauna usage, including staying hydrated and listening to your body’s cues."},
     {
-      question: "Are there any health restrictions?",
-      answer: "While saunas are generally safe for most people, we recommend consulting with your healthcare provider if you have heart conditions, are pregnant, or have other health concerns. Our staff can discuss any specific needs during your visit."
-    },
+      question: "Can I reserve a private room at Sauna Culture?",
+      answer: "Yes, Sauna Culture offers a sauna and cold plunge option for private gatherings up to 4 people. Contact us for more information on hosting your event at our facility." },
     {
-      question: "What's included in the membership?",
-      answer: "Memberships include unlimited access to all facilities, complimentary towels and robes, priority booking, guest passes, and exclusive access to special events. Annual members also receive personal wellness consultations and VIP amenities."
-    }
+      question: "How can I stay updated on Sauna Culture events and promotions?",
+      answer:"Stay connected with us through our website and social media channels for the latest updates on events, promotions, and wellness tips. Don’t forget to sign up for our newsletter to receive exclusive offers and announcements!" }
   ];
 
   return (
