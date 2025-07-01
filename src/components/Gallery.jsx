@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { useTheme } from '../contexts/ThemeContext';
 
 const GalleryContainer = styled.section`
   padding: 120px 0;
-  background: white;
+  background: ${props => props.theme.colors.backgroundCard};
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 `;
 
 const Container = styled.div`
@@ -26,7 +28,7 @@ const SectionHeader = styled.div`
 
 const SectionTitle = styled.h2`
   font-size: 3rem;
-  color: #1a1a1a;
+  color: ${props => props.theme.colors.textPrimary};
   margin-bottom: 1.5rem;
   font-weight: 500;
   
@@ -37,7 +39,7 @@ const SectionTitle = styled.h2`
 
 const SectionSubtitle = styled.p`
   font-size: 1.2rem;
-  color: #6a6a6a;
+  color: ${props => props.theme.colors.textSecondary};
   line-height: 1.6;
   font-weight: 400;
 `;
@@ -52,8 +54,8 @@ const FilterButtons = styled.div`
 
 const FilterButton = styled.button`
   background: ${props => props.active ? 'linear-gradient(135deg, #8b7355, #a68b5b)' : 'transparent'};
-  color: ${props => props.active ? 'white' : '#6a6a6a'};
-  border: 2px solid ${props => props.active ? 'transparent' : '#e0e0e0'};
+  color: ${props => props.active ? 'white' : props.theme.colors.textSecondary};
+  border: 2px solid ${props => props.active ? 'transparent' : props.theme.colors.border};
   padding: 12px 24px;
   border-radius: 6px;
   font-weight: 500;
@@ -84,13 +86,14 @@ const GalleryItem = styled.div`
   position: relative;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 20px ${props => props.theme.colors.shadow};
   transition: all 0.4s ease;
   height: 300px;
+  border: 1px solid ${props => props.theme.colors.border};
   
   &:hover {
     transform: translateY(-8px);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 12px 40px ${props => props.theme.colors.shadowHover};
   }
 `;
 
@@ -122,7 +125,7 @@ const GalleryOverlay = styled.div`
   bottom: 0;
   left: 0;
   right: 0;
-  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+  background: linear-gradient(transparent, ${props => props.theme.isDarkMode ? 'rgba(0, 0, 0, 0.9)' : 'rgba(0, 0, 0, 0.8)'});
   color: white;
   padding: 30px;
   transform: translateY(100%);
@@ -169,6 +172,7 @@ const PlaceholderImage = styled.div`
 
 const Gallery = () => {
   const [activeFilter, setActiveFilter] = useState('all');
+  const theme = useTheme();
 
   const galleryItems = [
     {

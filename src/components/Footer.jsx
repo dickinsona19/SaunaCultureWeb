@@ -1,11 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { useTheme } from '../contexts/ThemeContext';
 
 const FooterContainer = styled.footer`
-  background: #1a1a1a;
-  color: white;
+  background: ${props => props.theme.colors.backgroundSecondary};
+  color: ${props => props.theme.colors.textPrimary};
   padding: 80px 0 40px;
+  border-top: 1px solid ${props => props.theme.colors.border};
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 `;
 
 const Container = styled.div`
@@ -44,7 +47,7 @@ const FooterSection = styled.div`
   }
   
   p, li {
-    color: #b0b0b0;
+    color: ${props => props.theme.colors.textSecondary};
     line-height: 1.6;
     margin-bottom: 0.8rem;
   }
@@ -54,7 +57,7 @@ const FooterSection = styled.div`
   }
   
   a {
-    color: #b0b0b0;
+    color: ${props => props.theme.colors.textSecondary};
     transition: color 0.3s ease;
     text-decoration: none;
     
@@ -86,7 +89,7 @@ const Logo = styled.div`
     font-family: 'Playfair Display', serif;
     font-size: 24px;
     font-weight: 600;
-    color: white;
+    color: ${props => props.theme.colors.textPrimary};
   }
 `;
 
@@ -102,9 +105,10 @@ const SocialLink = styled.a`
   justify-content: center;
   width: 40px;
   height: 40px;
-  background: #2a2a2a;
+  background: ${props => props.theme.colors.backgroundCard};
+  border: 1px solid ${props => props.theme.colors.border};
   border-radius: 50%;
-  color: #b0b0b0;
+  color: ${props => props.theme.colors.textSecondary};
   font-size: 1.1rem;
   transition: all 0.3s ease;
   
@@ -112,6 +116,7 @@ const SocialLink = styled.a`
     background: linear-gradient(135deg, #8b7355, #a68b5b);
     color: white;
     transform: translateY(-2px);
+    border-color: transparent;
   }
 `;
 
@@ -122,19 +127,21 @@ const NewsletterForm = styled.div`
 const NewsletterInput = styled.input`
   width: 100%;
   padding: 12px;
-  border: 1px solid #3a3a3a;
+  border: 1px solid ${props => props.theme.colors.border};
   border-radius: 6px;
-  background: #2a2a2a;
-  color: white;
+  background: ${props => props.theme.colors.backgroundCard};
+  color: ${props => props.theme.colors.textPrimary};
   margin-bottom: 10px;
+  transition: all 0.3s ease;
   
   &::placeholder {
-    color: #888;
+    color: ${props => props.theme.colors.textMuted};
   }
   
   &:focus {
     outline: none;
     border-color: #8b7355;
+    box-shadow: 0 0 0 2px rgba(139, 115, 85, 0.1);
   }
 `;
 
@@ -154,7 +161,7 @@ const NewsletterButton = styled.button`
 `;
 
 const FooterBottom = styled.div`
-  border-top: 1px solid #3a3a3a;
+  border-top: 1px solid ${props => props.theme.colors.border};
   padding-top: 40px;
   display: flex;
   justify-content: space-between;
@@ -168,7 +175,7 @@ const FooterBottom = styled.div`
 `;
 
 const Copyright = styled.p`
-  color: #888;
+  color: ${props => props.theme.colors.textMuted};
   margin: 0;
 `;
 
@@ -181,7 +188,7 @@ const FooterLinks = styled.div`
   }
   
   a {
-    color: #888;
+    color: ${props => props.theme.colors.textMuted};
     font-size: 0.9rem;
     transition: color 0.3s ease;
     text-decoration: none;
@@ -193,6 +200,8 @@ const FooterLinks = styled.div`
 `;
 
 const Footer = () => {
+  const theme = useTheme();
+  
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {

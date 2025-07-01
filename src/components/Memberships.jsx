@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { useTheme } from '../contexts/ThemeContext';
 
 const MembershipsContainer = styled.section`
   padding: 120px 0;
-  background: #f8f8f8;
+  background: ${props => props.theme.colors.backgroundSecondary};
   min-height: 100vh;
   margin-top: 80px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 `;
 
 const Container = styled.div`
@@ -28,7 +30,7 @@ const SectionHeader = styled.div`
 
 const SectionTitle = styled.h1`
   font-size: 3.5rem;
-  color: #1a1a1a;
+  color: ${props => props.theme.colors.textPrimary};
   margin-bottom: 1.5rem;
   font-weight: 500;
   position: relative;
@@ -52,7 +54,7 @@ const SectionTitle = styled.h1`
 
 const SectionSubtitle = styled.p`
   font-size: 1.2rem;
-  color: #6a6a6a;
+  color: ${props => props.theme.colors.textSecondary};
   line-height: 1.6;
   font-weight: 400;
   margin-top: 2rem;
@@ -71,13 +73,13 @@ const MembershipGrid = styled.div`
 `;
 
 const MembershipCard = styled.div`
-  background: white;
+  background: ${props => props.theme.colors.backgroundCard};
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 20px ${props => props.theme.colors.shadow};
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
-  border: ${props => props.featured ? '3px solid #8b7355' : 'none'};
+  border: ${props => props.featured ? '3px solid #8b7355' : `1px solid ${props.theme.colors.border}`};
   
   &::before {
     content: '';
@@ -94,7 +96,7 @@ const MembershipCard = styled.div`
   
   &:hover {
     transform: translateY(-12px);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 20px 60px ${props => props.theme.colors.shadowHover};
     
     &::before {
       opacity: 1;
@@ -105,8 +107,8 @@ const MembershipCard = styled.div`
 const CardHeader = styled.div`
   padding: 40px 30px 20px;
   text-align: center;
-  background: ${props => props.featured ? 'linear-gradient(135deg, #8b7355, #a68b5b)' : '#fafafa'};
-  color: ${props => props.featured ? 'white' : '#1a1a1a'};
+  background: ${props => props.featured ? 'linear-gradient(135deg, #8b7355, #a68b5b)' : props.theme.colors.backgroundSecondary};
+  color: ${props => props.featured ? 'white' : props.theme.colors.textPrimary};
   position: relative;
 `;
 
@@ -146,14 +148,14 @@ const MembershipPrice = styled.div`
   .period {
     font-size: 1rem;
     font-weight: 400;
-    color: ${props => props.featured ? 'rgba(255,255,255,0.8)' : '#6a6a6a'};
+    color: ${props => props.featured ? 'rgba(255,255,255,0.8)' : props.theme.colors.textSecondary};
   }
 `;
 
 const MembershipDescription = styled.p`
   font-size: 1rem;
   opacity: ${props => props.featured ? '0.9' : '1'};
-  color: ${props => props.featured ? 'white' : '#6a6a6a'};
+  color: ${props => props.featured ? 'white' : props.theme.colors.textSecondary};
   line-height: 1.5;
 `;
 
@@ -167,11 +169,11 @@ const FeaturesList = styled.ul`
   
   li {
     padding: 12px 0;
-    color: #4a4a4a;
+    color: ${props => props.theme.colors.textMuted};
     position: relative;
     padding-left: 30px;
     font-weight: 500;
-    border-bottom: 1px solid #f0f0f0;
+    border-bottom: 1px solid ${props => props.theme.colors.borderLight};
     
     &:last-child {
       border-bottom: none;
@@ -236,15 +238,17 @@ const SelectButton = styled.button`
 `;
 
 const BenefitsSection = styled.div`
-  background: white;
+  background: ${props => props.theme.colors.backgroundCard};
   padding: 80px 40px;
   border-radius: 20px;
   margin-bottom: 80px;
+  border: 1px solid ${props => props.theme.colors.border};
+  box-shadow: 0 8px 30px ${props => props.theme.colors.shadow};
 `;
 
 const BenefitsTitle = styled.h2`
   font-size: 2.5rem;
-  color: #1a1a1a;
+  color: ${props => props.theme.colors.textPrimary};
   margin-bottom: 3rem;
   text-align: center;
   font-weight: 500;
@@ -277,25 +281,26 @@ const BenefitIcon = styled.div`
 
 const BenefitTitle = styled.h4`
   font-size: 1.3rem;
-  color: #1a1a1a;
+  color: ${props => props.theme.colors.textPrimary};
   margin-bottom: 1rem;
   font-weight: 500;
 `;
 
 const BenefitDescription = styled.p`
-  color: #6a6a6a;
+  color: ${props => props.theme.colors.textSecondary};
   line-height: 1.6;
 `;
 
 const FAQSection = styled.div`
-  background: #fafafa;
+  background: ${props => props.theme.colors.backgroundSecondary};
   padding: 60px 40px;
   border-radius: 16px;
+  border: 1px solid ${props => props.theme.colors.border};
 `;
 
 const FAQTitle = styled.h3`
   font-size: 2rem;
-  color: #1a1a1a;
+  color: ${props => props.theme.colors.textPrimary};
   margin-bottom: 2rem;
   text-align: center;
   font-weight: 500;
@@ -304,25 +309,28 @@ const FAQTitle = styled.h3`
 const FAQItem = styled.div`
   margin-bottom: 1.5rem;
   padding: 20px;
-  background: white;
+  background: ${props => props.theme.colors.backgroundCard};
   border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 10px ${props => props.theme.colors.shadow};
+  border: 1px solid ${props => props.theme.colors.border};
 `;
 
 const FAQQuestion = styled.h5`
   font-size: 1.1rem;
-  color: #1a1a1a;
+  color: ${props => props.theme.colors.textPrimary};
   margin-bottom: 0.5rem;
   font-weight: 600;
 `;
 
 const FAQAnswer = styled.p`
-  color: #6a6a6a;
+  color: ${props => props.theme.colors.textSecondary};
   line-height: 1.5;
   margin: 0;
 `;
 
 const Memberships = () => {
+  const theme = useTheme();
+  
   const memberships = [
     {
       title: 'Essential',

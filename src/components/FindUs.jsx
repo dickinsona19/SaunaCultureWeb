@@ -1,9 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useTheme } from '../contexts/ThemeContext';
 
 const FindUsContainer = styled.section`
   padding: 120px 0;
-  background: white;
+  background: ${props => props.theme.colors.backgroundSecondary};
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 `;
 
 const Container = styled.div`
@@ -26,7 +28,7 @@ const SectionHeader = styled.div`
 
 const SectionTitle = styled.h2`
   font-size: 3rem;
-  color: #1a1a1a;
+  color: ${props => props.theme.colors.textPrimary};
   margin-bottom: 1.5rem;
   font-weight: 500;
   
@@ -37,7 +39,7 @@ const SectionTitle = styled.h2`
 
 const SectionSubtitle = styled.p`
   font-size: 1.2rem;
-  color: #6a6a6a;
+  color: ${props => props.theme.colors.textSecondary};
   line-height: 1.6;
   font-weight: 400;
 `;
@@ -55,14 +57,17 @@ const ContentGrid = styled.div`
 `;
 
 const ContactInfo = styled.div`
-  background: #f8f8f8;
+  background: ${props => props.theme.colors.backgroundCard};
   padding: 50px 40px;
   border-radius: 12px;
+  border: 1px solid ${props => props.theme.colors.border};
+  box-shadow: 0 4px 20px ${props => props.theme.colors.shadow};
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 `;
 
 const ContactTitle = styled.h3`
   font-size: 1.8rem;
-  color: #1a1a1a;
+  color: ${props => props.theme.colors.textPrimary};
   margin-bottom: 2rem;
   font-weight: 500;
 `;
@@ -97,13 +102,13 @@ const ContactDetails = styled.div`
 
 const ContactLabel = styled.h4`
   font-size: 1.1rem;
-  color: #1a1a1a;
+  color: ${props => props.theme.colors.textPrimary};
   margin-bottom: 0.5rem;
   font-weight: 600;
 `;
 
 const ContactText = styled.p`
-  color: #6a6a6a;
+  color: ${props => props.theme.colors.textSecondary};
   line-height: 1.5;
   margin: 0;
 `;
@@ -121,6 +126,7 @@ const MapContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  box-shadow: 0 4px 20px ${props => props.theme.colors.shadow};
   
   &::before {
     content: '';
@@ -130,6 +136,7 @@ const MapContainer = styled.div`
     right: 0;
     bottom: 0;
     background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='20' cy='20' r='2' fill='%23ffffff' opacity='0.1'/%3E%3Ccircle cx='80' cy='80' r='2' fill='%23ffffff' opacity='0.1'/%3E%3Ccircle cx='80' cy='20' r='2' fill='%23ffffff' opacity='0.1'/%3E%3Ccircle cx='20' cy='80' r='2' fill='%23ffffff' opacity='0.1'/%3E%3C/svg%3E") repeat;
+    animation: float 8s ease-in-out infinite;
   }
 `;
 
@@ -182,15 +189,18 @@ const HoursGrid = styled.div`
 `;
 
 const HoursCard = styled.div`
-  background: #f8f8f8;
+  background: ${props => props.theme.colors.backgroundCard};
   padding: 40px 30px;
   border-radius: 12px;
   text-align: center;
+  border: 1px solid ${props => props.theme.colors.border};
+  box-shadow: 0 4px 20px ${props => props.theme.colors.shadow};
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 `;
 
 const HoursTitle = styled.h3`
   font-size: 1.5rem;
-  color: #1a1a1a;
+  color: ${props => props.theme.colors.textPrimary};
   margin-bottom: 1.5rem;
   font-weight: 500;
 `;
@@ -200,7 +210,7 @@ const HoursItem = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 8px 0;
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid ${props => props.theme.colors.borderLight};
   
   &:last-child {
     border-bottom: none;
@@ -208,7 +218,7 @@ const HoursItem = styled.div`
 `;
 
 const DayLabel = styled.span`
-  color: #4a4a4a;
+  color: ${props => props.theme.colors.textMuted};
   font-weight: 500;
 `;
 
@@ -218,6 +228,8 @@ const TimeLabel = styled.span`
 `;
 
 const FindUs = () => {
+  const theme = useTheme();
+  
   const hours = [
     { day: 'Monday - Friday', time: '6:00 AM - 10:00 PM' },
     { day: 'Saturday', time: '7:00 AM - 11:00 PM' },

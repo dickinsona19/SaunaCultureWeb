@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { useTheme } from '../contexts/ThemeContext';
 
 const FAQContainer = styled.section`
   padding: 120px 0;
-  background: #f8f8f8;
+  background: ${props => props.theme.colors.backgroundCard};
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 `;
 
 const Container = styled.div`
@@ -23,7 +25,7 @@ const SectionHeader = styled.div`
 
 const SectionTitle = styled.h2`
   font-size: 3rem;
-  color: #1a1a1a;
+  color: ${props => props.theme.colors.textPrimary};
   margin-bottom: 1.5rem;
   font-weight: 500;
   
@@ -34,7 +36,7 @@ const SectionTitle = styled.h2`
 
 const SectionSubtitle = styled.p`
   font-size: 1.2rem;
-  color: #6a6a6a;
+  color: ${props => props.theme.colors.textSecondary};
   line-height: 1.6;
   font-weight: 400;
 `;
@@ -47,22 +49,23 @@ const FAQList = styled.div`
 `;
 
 const FAQItem = styled.div`
-  background: white;
+  background: ${props => props.theme.colors.backgroundSecondary};
   border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 20px ${props => props.theme.colors.shadow};
   overflow: hidden;
   transition: all 0.3s ease;
+  border: 1px solid ${props => props.theme.colors.border};
   
   &:hover {
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 8px 30px ${props => props.theme.colors.shadowHover};
   }
 `;
 
 const FAQQuestion = styled.button`
   width: 100%;
   padding: 30px;
-  background: white;
-  color: #1a1a1a;
+  background: transparent;
+  color: ${props => props.theme.colors.textPrimary};
   border: none;
   text-align: left;
   font-size: 1.2rem;
@@ -74,7 +77,7 @@ const FAQQuestion = styled.button`
   transition: all 0.3s ease;
   
   &:hover {
-    background: #f8f8f8;
+    background: ${props => props.theme.colors.backgroundCard};
   }
 `;
 
@@ -89,12 +92,12 @@ const FAQAnswer = styled.div`
   max-height: ${props => props.isOpen ? '500px' : '0'};
   overflow: hidden;
   transition: max-height 0.3s ease;
-  background: #f8f8f8;
+  background: ${props => props.theme.colors.backgroundCard};
 `;
 
 const FAQAnswerContent = styled.div`
   padding: 0 30px 30px;
-  color: #6a6a6a;
+  color: ${props => props.theme.colors.textSecondary};
   line-height: 1.6;
   font-size: 1.1rem;
 `;
@@ -107,6 +110,7 @@ const CTASection = styled.div`
   border-radius: 12px;
   position: relative;
   overflow: hidden;
+  box-shadow: 0 8px 30px ${props => props.theme.colors.shadow};
   
   &::before {
     content: '';
@@ -154,6 +158,7 @@ const CTAButton = styled.button`
 
 const FAQ = () => {
   const [openItems, setOpenItems] = useState({});
+  const theme = useTheme();
 
   const toggleItem = (index) => {
     setOpenItems(prev => ({
