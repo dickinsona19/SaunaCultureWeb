@@ -128,6 +128,9 @@ const CTATitle = styled.h3`
   margin-bottom: 1rem;
   position: relative;
   z-index: 2;
+  color: #ffffff;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  font-weight: 600;
 `;
 
 const CTADescription = styled.p`
@@ -135,7 +138,11 @@ const CTADescription = styled.p`
   margin-bottom: 2rem;
   position: relative;
   z-index: 2;
-  opacity: 0.9;
+  color: #ffffff;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+  font-weight: 400;
+  opacity: 0.98;
+  line-height: 1.6;
 `;
 
 const CTAButton = styled.button`
@@ -153,6 +160,7 @@ const CTAButton = styled.button`
   &:hover {
     transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
+    background: #f8f8f8;
   }
 `;
 
