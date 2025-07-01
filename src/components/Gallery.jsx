@@ -2,6 +2,11 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useTheme } from '../contexts/ThemeContext';
 import saunagallery from '../assets/saunagal.webp';
+import sauna1 from '../assets/Sauna2.webp';
+import coldplunge1 from '../assets/coldplunge1.webp';
+import coldplunge2 from '../assets/coldplunge2.webp';
+import coldplunge3 from '../assets/coldplunge3.webp';
+
 
 const GalleryContainer = styled.section`
   padding: 120px 0;
@@ -170,43 +175,35 @@ const Gallery = () => {
       category: 'coldbath',
       title: 'Cold Plunge Pool',
       description: 'Invigorating cold therapy for recovery and wellness',
-      image: 'https://images.pexels.com/photos/1029604/pexels-photo-1029604.jpeg?auto=compress&cs=tinysrgb&w=800'
+      image: coldplunge1
     },
     {
       id: 3,
       category: 'saunas',
       title: 'Infrared Wellness Suite',
       description: 'Modern infrared technology for deep healing',
-      image: 'https://images.pexels.com/photos/3188/wood-light-vacation-picnic.jpg?auto=compress&cs=tinysrgb&w=800'
+      image: sauna1
     },
     {
       id: 4,
-      category: 'facilities',
+      category: 'coldbath',
       title: 'Relaxation Lounge',
       description: 'Comfortable spaces for post-sauna relaxation',
-      image: 'https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=800'
+      image: coldplunge2
     },
     {
       id: 5,
-      category: 'facilities',
+      category: 'coldbath',
       title: 'Premium Changing Rooms',
       description: 'Luxurious amenities and comfortable spaces',
-      image: 'https://images.pexels.com/photos/1571453/pexels-photo-1571453.jpeg?auto=compress&cs=tinysrgb&w=800'
-    },
-    {
-      id: 6,
-      category: 'saunas',
-      title: 'Private Couples Suite',
-      description: 'Intimate sauna experience for two',
-      image: 'https://images.pexels.com/photos/1571458/pexels-photo-1571458.jpeg?auto=compress&cs=tinysrgb&w=800'
+      image: coldplunge3
     }
   ];
 
   const filters = [
     { key: 'all', label: 'All' },
     { key: 'saunas', label: 'Saunas' },
-    { key: 'coldbath', label: 'Cold Bath' },
-    { key: 'facilities', label: 'Facilities' }
+    { key: 'coldbath', label: 'Cold Bath' }
   ];
 
   const filteredItems = activeFilter === 'all' 
@@ -241,8 +238,7 @@ const Gallery = () => {
             <GalleryItem key={item.id}>
               <GalleryImage image={item.image} />
               <GalleryOverlay>
-                <GalleryTitle>{item.title}</GalleryTitle>
-                <GalleryDescription>{item.description}</GalleryDescription>
+
               </GalleryOverlay>
             </GalleryItem>
           ))}

@@ -342,7 +342,7 @@ const Header = () => {
       <HeaderContainer scrolled={scrolled}>
         <Nav scrolled={scrolled}>
           <Logo to="/" onClick={() => setIsOpen(false)}>
-            <div className="logo-icon">🔥</div>
+            <img src="/logo.svg" alt="Sauna Culture Logo" className="logo-icon" />
             <span className="logo-text">Sauna Culture</span>
           </Logo>
           
