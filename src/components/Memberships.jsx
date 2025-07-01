@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { useTheme } from '../contexts/ThemeContext';
 
@@ -330,6 +330,15 @@ const FAQAnswer = styled.p`
 
 const Memberships = () => {
   const theme = useTheme();
+  
+  // Scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    });
+  }, []);
   
   const memberships = [
     {
