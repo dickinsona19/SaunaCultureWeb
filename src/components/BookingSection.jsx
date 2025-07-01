@@ -6,6 +6,7 @@ const BookingContainer = styled.section`
   padding: 120px 0;
   background: ${props => props.theme.colors.background};
   position: relative;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   
   &::before {
     content: '';
@@ -255,6 +256,7 @@ const CTASection = styled.div`
   border-radius: 20px;
   position: relative;
   overflow: hidden;
+  box-shadow: 0 12px 40px ${props => props.theme.colors.shadowHover};
   
   &::before {
     content: '';
@@ -273,6 +275,9 @@ const CTATitle = styled.h3`
   margin-bottom: 1.5rem;
   position: relative;
   z-index: 2;
+  color: #ffffff;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  font-weight: 600;
   
   @media (max-width: 768px) {
     font-size: 2.2rem;
@@ -284,11 +289,14 @@ const CTADescription = styled.p`
   margin-bottom: 2.5rem;
   position: relative;
   z-index: 2;
-  opacity: 0.9;
+  color: #ffffff;
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
   line-height: 1.6;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+  font-weight: 400;
+  opacity: 0.98;
 `;
 
 const CTAButton = styled.button`
@@ -299,6 +307,7 @@ const CTAButton = styled.button`
   font-size: 16px;
   font-weight: 600;
   letter-spacing: 0.5px;
+  transition: all 0.3s ease;
   position: relative;
   z-index: 2;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
@@ -306,6 +315,7 @@ const CTAButton = styled.button`
   &:hover {
     transform: translateY(-3px);
     box-shadow: 0 12px 35px rgba(255, 255, 255, 0.3);
+    background: #f8f8f8;
   }
 `;
 
