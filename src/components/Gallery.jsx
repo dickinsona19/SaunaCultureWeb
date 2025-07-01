@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useTheme } from '../contexts/ThemeContext';
 import saunagallery from '../assets/saunagal.webp';
+
 const GalleryContainer = styled.section`
   padding: 120px 0;
   background: ${props => props.theme.colors.backgroundCard};
@@ -140,33 +141,16 @@ const GalleryTitle = styled.h3`
   font-size: 1.3rem;
   margin-bottom: 8px;
   font-weight: 500;
+  color: #ffffff;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
 `;
 
 const GalleryDescription = styled.p`
   opacity: 0.9;
   line-height: 1.5;
   font-size: 0.9rem;
-`;
-
-const PlaceholderImage = styled.div`
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, #8b7355, #a68b5b);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 3rem;
-  color: white;
-  position: relative;
-  
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
- }
+  color: #ffffff;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
 `;
 
 const Gallery = () => {
@@ -183,9 +167,9 @@ const Gallery = () => {
     },
     {
       id: 2,
-      category: 'coldbat',
-      title: 'Relaxation Lounge',
-      description: 'Comfortable spaces for post-sauna relaxation',
+      category: 'coldbath',
+      title: 'Cold Plunge Pool',
+      description: 'Invigorating cold therapy for recovery and wellness',
       image: 'https://images.pexels.com/photos/1029604/pexels-photo-1029604.jpeg?auto=compress&cs=tinysrgb&w=800'
     },
     {
@@ -197,31 +181,32 @@ const Gallery = () => {
     },
     {
       id: 4,
-      category: 'coldbat',
-      title: 'Ocean View Deck',
-      description: 'Stunning views of the coastline',
-      image: 'https://images.pexels.com/photos/1029604/pexels-photo-1029604.jpeg?auto=compress&cs=tinysrgb&w=800'
+      category: 'facilities',
+      title: 'Relaxation Lounge',
+      description: 'Comfortable spaces for post-sauna relaxation',
+      image: 'https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=800'
     },
     {
       id: 5,
-      category: 'coldbat',
+      category: 'facilities',
       title: 'Premium Changing Rooms',
       description: 'Luxurious amenities and comfortable spaces',
-      image: 'https://images.pexels.com/photos/3188/wood-light-vacation-picnic.jpg?auto=compress&cs=tinysrgb&w=800'
+      image: 'https://images.pexels.com/photos/1571453/pexels-photo-1571453.jpeg?auto=compress&cs=tinysrgb&w=800'
     },
     {
       id: 6,
       category: 'saunas',
-      title: 'Couples Suite',
-      description: 'Private sauna experience for two',
-      image: 'https://images.pexels.com/photos/1029604/pexels-photo-1029604.jpeg?auto=compress&cs=tinysrgb&w=800'
+      title: 'Private Couples Suite',
+      description: 'Intimate sauna experience for two',
+      image: 'https://images.pexels.com/photos/1571458/pexels-photo-1571458.jpeg?auto=compress&cs=tinysrgb&w=800'
     }
   ];
 
   const filters = [
     { key: 'all', label: 'All' },
     { key: 'saunas', label: 'Saunas' },
-    { key: 'coldbath', label: 'Cold Bath' }
+    { key: 'coldbath', label: 'Cold Bath' },
+    { key: 'facilities', label: 'Facilities' }
   ];
 
   const filteredItems = activeFilter === 'all' 
@@ -254,7 +239,7 @@ const Gallery = () => {
         <GalleryGrid>
           {filteredItems.map((item) => (
             <GalleryItem key={item.id}>
-              <PlaceholderImage />
+              <GalleryImage image={item.image} />
               <GalleryOverlay>
                 <GalleryTitle>{item.title}</GalleryTitle>
                 <GalleryDescription>{item.description}</GalleryDescription>
