@@ -152,6 +152,9 @@ const MapTitle = styled.h3`
   margin-bottom: 1rem;
   position: relative;
   z-index: 2;
+  color: #ffffff;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  font-weight: 600;
 `;
 
 const MapDescription = styled.p`
@@ -159,8 +162,12 @@ const MapDescription = styled.p`
   margin-bottom: 2rem;
   position: relative;
   z-index: 2;
-  opacity: 0.9;
+  color: #ffffff;
   max-width: 400px;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+  font-weight: 400;
+  opacity: 0.98;
+  line-height: 1.6;
 `;
 
 const DirectionsButton = styled.button`
@@ -178,6 +185,7 @@ const DirectionsButton = styled.button`
   &:hover {
     transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
+    background: #f8f8f8;
   }
 `;
 
